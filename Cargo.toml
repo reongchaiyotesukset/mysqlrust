@@ -1,0 +1,10 @@
+[package]
+name = "mysql_gpt"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+gtk = "0.16.2"
+mysql = "23.0.1"
