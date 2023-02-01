@@ -41,7 +41,9 @@ fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
                 example { id, data }
             },
         )?;
-					println!("{:?}",stack[1].data);
+					println!("{:?}",stack[0].data);
+	                                println!("{:?}",stack[1].data);
+	                                println!("{:?}",stack[2].data);
 					//println!("{:?}",conn);
 
       
