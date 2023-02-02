@@ -13,26 +13,12 @@ struct example {
 
 fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
 	       
-            let url = "mysql://root:cargorust@localhost:3306/testdb";
+            //let url = "mysql://root:12345678@localhost:3306/testdb";
+            let   url = "mysql://cargo:12345678@192.168.1.43:3306/testdb";
 			let mut pool = Pool::new(url)?;
-			let mut conn = pool.get_conn()?; 	
-            //let mut conn = Pool::get_conn(&pool)?;
-             
-             //vector
-              let payments = vec![
-				example { id: 1, data: Some("c#".into()) },
-			  ];      
-			  //insert
-			  /*
-			conn.exec_batch(
-				"INSERT INTO example (id,  data)
-				VALUES (:id, :data)",
-				payments.iter().map(|p| params! {
-				"id" => p.id,
-				"data" => &p.data,
-			 })
-			)?;
-			*/
+			//let mut conn = pool.get_conn()?; 	
+            let mut conn = Pool::get_conn(&pool)?;
+               
 			//select
 			 let stack = conn
         .query_map(
@@ -41,10 +27,11 @@ fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
                 example { id, data }
             },
         )?;
+        
 					println!("{:?}",stack[0].data);
-	                                println!("{:?}",stack[1].data);
-	                                println!("{:?}",stack[2].data);
-					//println!("{:?}",conn);
+					println!("{:?}",stack[1].data);
+					println!("{:?}",stack[2].data);
+	
 
       
               Ok(())
